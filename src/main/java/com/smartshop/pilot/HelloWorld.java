@@ -6,8 +6,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
+import com.smartshop.catalog.Address;
 
-@Path("/hello")
+
 public class HelloWorld {
 
     @GET
@@ -19,11 +20,10 @@ public class HelloWorld {
 
     @POST
     @Produces("application/json")
-    @Consumes("application/json")
     @Path("/jsonBean")
-    public Response modifyJson(JsonBean input) {
-	input.setVal2(input.getVal1());
-	return Response.ok().entity(input).build();
+    public Response modifyJson(JsonBean input1) {
+	input1.setVal2(input1.getVal1());
+	return Response.ok().entity(input1).build();
     }
 }
 
