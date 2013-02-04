@@ -64,6 +64,7 @@ public class Delivery {
 	}
 	public void setDeliveryType(DeliveryType deliveryType) {
 		this.deliveryType = deliveryType;
+		
 	}
 	
 	

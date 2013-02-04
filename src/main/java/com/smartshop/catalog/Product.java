@@ -10,7 +10,7 @@ public class Product implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 3204650678728268625L;
-	private String Id;
+	private Integer Id;
 	private String name;
 	private String description;
 	private String sellingUnit;
@@ -18,10 +18,13 @@ public class Product implements Serializable {
 	private List<Supplier> suppliers;
 	private String otherDetails;
 	private List<ProductCategory> productCatagories;
-	public String getId() {
+
+
+
+	public Integer getId() {
 		return Id;
 	}
-	public void setId(String id) {
+	public void setId(Integer id) {
 		Id = id;
 	}
 	public String getName() {
