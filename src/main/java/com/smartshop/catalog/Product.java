@@ -3,32 +3,47 @@ package com.smartshop.catalog;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
+
+
+
+
+@Entity
 public class Product implements Serializable {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 3204650678728268625L;
-	private Integer Id;
+
+	@Id
+	private Integer id;
 	private String name;
 	private String description;
 	private String sellingUnit;
 	private Double unitPrice;
+	
+	@ManyToMany
 	private List<Supplier> suppliers;
 	private String otherDetails;
-	private List<ProductCategory> productCatagories;
+	
+//	@ManyToMany
+//	private List<ProductCategory> productCatagories;
 
 
 
-	public Integer getId() {
-		return Id;
-	}
-	public void setId(Integer id) {
-		Id = id;
-	}
+
 	public String getName() {
 		return name;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	public void setName(String name) {
 		this.name = name;
@@ -63,15 +78,13 @@ public class Product implements Serializable {
 	public void setOtherDetails(String otherDetails) {
 		this.otherDetails = otherDetails;
 	}
-	public List<ProductCategory> getProductCatagories() {
-		return productCatagories;
-	}
-	public void setProductCatagories(List<ProductCategory> productCatagories) {
-		this.productCatagories = productCatagories;
-	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+//	public List<ProductCategory> getProductCatagories() {
+//		return productCatagories;
+//	}
+//	public void setProductCatagories(List<ProductCategory> productCatagories) {
+//		this.productCatagories = productCatagories;
+//	}
+
 	
 	
 	

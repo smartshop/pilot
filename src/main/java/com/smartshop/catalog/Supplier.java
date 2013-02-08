@@ -2,11 +2,24 @@ package com.smartshop.catalog;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+import javax.persistence.OneToOne;
+
+@Entity
 public class Supplier implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6000346479850349346L;
+	
+	@Id
 	private Integer id;
 	private String name;
+	
+	@OneToOne
 	private Address address;
 	private String otherDetails;
 	

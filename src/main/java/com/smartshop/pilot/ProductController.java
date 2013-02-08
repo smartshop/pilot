@@ -14,7 +14,7 @@ import com.smartshop.catalog.Product;
 import com.smartshop.dao.CatalogService;
 
 
-public class HelloWorld {
+public class ProductController {
 	
 	
 	@Autowired
@@ -28,6 +28,15 @@ public class HelloWorld {
     	Product product = catalogService.getProductById(input);
 		return product;	
     }
+    
+	@GET
+	@Produces("application/json")
+	@Path("/catalog/product/{productId}")
+	public Product modifyJson(@PathParam("productId") Integer productId) {
+
+		Product product = catalogService.getProductById(productId);
+		return product;	
+	}
 //
 //    @POST
 //    @Produces("application/json")

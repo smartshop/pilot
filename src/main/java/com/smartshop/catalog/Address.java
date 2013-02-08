@@ -1,7 +1,27 @@
 package com.smartshop.catalog;
 
-public class Address {
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Address implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 506166351241751091L;
+
+	@Id
+	private Integer id;
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	private String addressLine1;
 	private String addressLine2;
 	private String city;

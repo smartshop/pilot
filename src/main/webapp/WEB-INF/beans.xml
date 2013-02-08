@@ -10,6 +10,7 @@ http://cxf.apache.org/jaxrs
 http://cxf.apache.org/schemas/jaxrs.xsd">
 
 	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="applicationContext-hibernate.xml"/>
 
 
 	<context:property-placeholder />
@@ -23,9 +24,9 @@ http://cxf.apache.org/schemas/jaxrs.xsd">
 
 	<jaxrs:server id="services" address="/">
 		<jaxrs:serviceBeans>
-			<bean id ="helloWorld" class="com.smartshop.pilot.HelloWorld" />
+ 			<bean id ="productController" class="com.smartshop.pilot.ProductController" />
 			
-			<bean id="catalogController" class="com.smartshop.pilot.CatalogController" />
+		<!-- 	<bean id="catalogController" class="com.smartshop.pilot.CatalogController" /> -->
 		</jaxrs:serviceBeans>
 		<jaxrs:providers>
 			<bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider" />
