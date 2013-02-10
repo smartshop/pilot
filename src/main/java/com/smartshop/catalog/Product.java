@@ -3,9 +3,14 @@ package com.smartshop.catalog;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.Generated;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 
@@ -20,6 +25,7 @@ public class Product implements Serializable {
 	private static final long serialVersionUID = 3204650678728268625L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
 	private String description;
