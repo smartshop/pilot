@@ -29,6 +29,7 @@
 				<value>com.smartshop.catalog.Customer</value>
 				<value>com.smartshop.catalog.Product</value>
 				<value>com.smartshop.catalog.Supplier</value>
+				<value>com.smartshop.catalog.ProductCategory</value>
 			</list>
 		</property>
 		<!-- <property name="annotatedPackages"> <list> <value>com.smartshop.catalog</value> 

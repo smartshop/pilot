@@ -3,14 +3,14 @@ package com.smartshop.catalog;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.annotation.Generated;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
-import org.springframework.beans.factory.annotation.Autowired;
 
 
 
@@ -24,20 +24,33 @@ public class Product implements Serializable {
 	 */
 	private static final long serialVersionUID = 3204650678728268625L;
 
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	private String name;
 	private String description;
 	private String sellingUnit;
 	private Double unitPrice;
 	
+	@OneToOne
+	private Manufacturer manufacturer;
+
 	@ManyToMany
 	private List<Supplier> suppliers;
 	private String otherDetails;
 	
-//	@ManyToMany
-//	private List<ProductCategory> productCatagories;
+	@ManyToMany
+	private List<ProductCategory> productCatagories;
 
 
 
@@ -45,12 +58,9 @@ public class Product implements Serializable {
 	public String getName() {
 		return name;
 	}
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
+	
+
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -84,12 +94,27 @@ public class Product implements Serializable {
 	public void setOtherDetails(String otherDetails) {
 		this.otherDetails = otherDetails;
 	}
-//	public List<ProductCategory> getProductCatagories() {
-//		return productCatagories;
-//	}
-//	public void setProductCatagories(List<ProductCategory> productCatagories) {
-//		this.productCatagories = productCatagories;
-//	}
+	public List<ProductCategory> getProductCatagories() {
+		return productCatagories;
+	}
+	public void setProductCatagories(List<ProductCategory> productCatagories) {
+		this.productCatagories = productCatagories;
+	}
+
+
+	public boolean add(ProductCategory e) {
+		return productCatagories.add(e);
+	}
+
+
+	public Manufacturer getManufacturer() {
+		return manufacturer;
+	}
+
+
+	public void setManufacturer(Manufacturer manufacturer) {
+		this.manufacturer = manufacturer;
+	}
 
 	
 	

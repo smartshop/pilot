@@ -3,6 +3,8 @@ package com.smartshop.catalog;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -14,24 +16,25 @@ public class Address implements Serializable{
 	private static final long serialVersionUID = 506166351241751091L;
 
 	@Id
-	private Integer id;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long id;
 	
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+
+	public void setId(Long id) {
 		this.id = id;
 	}
+
 	private String addressLine1;
 	private String addressLine2;
 	private String city;
 	private String state;
 	private String country;
 	private Long zipcode;
-	private Long PhoneNumber1;
-	private Long PhoneNumber2;
-	private String email1;
-	private String email2;
+
+
 	
 	public String getAddressLine1() {
 		return addressLine1;
@@ -69,32 +72,6 @@ public class Address implements Serializable{
 	public void setZipcode(Long zipcode) {
 		this.zipcode = zipcode;
 	}
-	public Long getPhoneNumber1() {
-		return PhoneNumber1;
-	}
-	public void setPhoneNumber1(Long phoneNumber1) {
-		PhoneNumber1 = phoneNumber1;
-	}
-	public Long getPhoneNumber2() {
-		return PhoneNumber2;
-	}
-	public void setPhoneNumber2(Long phoneNumber2) {
-		PhoneNumber2 = phoneNumber2;
-	}
-	public String getEmail1() {
-		return email1;
-	}
-	public void setEmail1(String email1) {
-		this.email1 = email1;
-	}
-	public String getEmail2() {
-		return email2;
-	}
-	public void setEmail2(String email2) {
-		this.email2 = email2;
-	}
-	
-	
-	
+
 
 }

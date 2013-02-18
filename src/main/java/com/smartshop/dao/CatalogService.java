@@ -30,10 +30,17 @@ public class CatalogService {
 	}
 	
 	@Transactional
-	public void addOrUpdateProduct(Product product){
+	public void addOrUpdateProduct(Object object){
 
-			sessionFactory.getCurrentSession().merge(product);
+			sessionFactory.getCurrentSession().merge(object);
 	}
 	
+	public void addList(List list){
+
+		for(Object object: list){
+			addOrUpdateProduct(object);
+		}
+	}
+
 
 }

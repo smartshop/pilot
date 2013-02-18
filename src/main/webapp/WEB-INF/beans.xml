@@ -24,9 +24,8 @@ http://cxf.apache.org/schemas/jaxrs.xsd">
 
 	<jaxrs:server id="services" address="/">
 		<jaxrs:serviceBeans>
- 			<bean id ="productController" class="com.smartshop.pilot.ProductController" />
-			
-		<!-- 	<bean id="catalogController" class="com.smartshop.pilot.CatalogController" /> -->
+ 			<bean id ="catalogController" class="com.smartshop.pilot.CatalogController" />
+ 			<bean id ="bulkCatalogController" class="com.smartshop.pilot.BulkCatalogController" />
 		</jaxrs:serviceBeans>
 		<jaxrs:providers>
 			<bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider" />
@@ -34,5 +33,6 @@ http://cxf.apache.org/schemas/jaxrs.xsd">
 	</jaxrs:server>
 	
 	<bean name="catalogService" class="com.smartshop.dao.CatalogService"/>
+	<bean name="catalogGenerator" class="com.smartshop.dao.CatalogGenerator"/>
 
 </beans>
