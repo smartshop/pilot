@@ -30,6 +30,9 @@
 				<value>com.smartshop.catalog.Product</value>
 				<value>com.smartshop.catalog.Supplier</value>
 				<value>com.smartshop.catalog.ProductCategory</value>
+				<value>com.smartshop.catalog.Manufacturer</value>
+				<value>com.smartshop.catalog.PhoneNumber</value>
+				<value>com.smartshop.catalog.Email</value>
 			</list>
 		</property>
 		<!-- <property name="annotatedPackages"> <list> <value>com.smartshop.catalog</value> 

@@ -3,6 +3,7 @@ package com.smartshop.catalog;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +12,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.Cascade;
 
 @Entity
 public class Supplier implements Serializable{
@@ -26,24 +29,24 @@ public class Supplier implements Serializable{
 	
 	private String name;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	private Address address;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	private Email primaryEmail;
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
 	private List<Email> alternateEmails;
 	
 	private String otherDetails;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	private PhoneNumber primaryPhoneNumber;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	private PhoneNumber alternatePhoneNumber;
 	
-	@ManyToMany
+	@ManyToMany(cascade=CascadeType.ALL)
 	private List<Product> products;
 	
 	public boolean add(Product e) {

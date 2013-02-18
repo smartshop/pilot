@@ -32,7 +32,7 @@ public class CatalogService {
 	@Transactional
 	public void addOrUpdateProduct(Object object){
 
-			sessionFactory.getCurrentSession().merge(object);
+			sessionFactory.getCurrentSession().saveOrUpdate(object);
 	}
 	
 	public void addList(List list){
