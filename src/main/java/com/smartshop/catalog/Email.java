@@ -1,21 +1,21 @@
 package com.smartshop.catalog;
 
-import java.io.Serializable;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
-public class Email implements Serializable {
-	
 
+@Entity
+public class Email extends EntityObject {
+	
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 8962380168176279101L;
-	
+	private static final long serialVersionUID = -8674541992856511919L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;

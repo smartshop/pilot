@@ -1,6 +1,6 @@
 package com.smartshop.catalog;
 
-import java.io.Serializable;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,15 +10,15 @@ import javax.persistence.Id;
 
 
 
-@Entity
-public class ProductCategory implements Serializable{
 
+@Entity
+public class ProductCategory extends EntityObject{
 
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -2989822099227913440L;
+	private static final long serialVersionUID = -387938833418393398L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

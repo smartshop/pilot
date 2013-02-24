@@ -19,11 +19,8 @@
 	<context:property-placeholder
 		location="classpath:environment/local/jdbc.properties" />
 
-	<!-- Hibernate SessionFactory -->
-	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-		<property name="annotatedClasses">
+	<bean id="entityTypes" class="java.util.ArrayList">
+		<constructor-arg>
 			<list>
 				<value>com.smartshop.catalog.Address</value>
 				<value>com.smartshop.catalog.Customer</value>
@@ -34,6 +31,13 @@
 				<value>com.smartshop.catalog.PhoneNumber</value>
 				<value>com.smartshop.catalog.Email</value>
 			</list>
+		</constructor-arg>
+	</bean>
+	<!-- Hibernate SessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses" ref="entityTypes">
 		</property>
 		<!-- <property name="annotatedPackages"> <list> <value>com.smartshop.catalog</value> 
 			</list> </property> -->

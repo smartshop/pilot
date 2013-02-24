@@ -1,6 +1,6 @@
 package com.smartshop.catalog;
 
-import java.io.Serializable;
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,16 +13,19 @@ import javax.persistence.OneToMany;
 
 import javax.persistence.OneToOne;
 
-import org.hibernate.annotations.Cascade;
+
+
 
 @Entity
-public class Supplier implements Serializable{
+public class Supplier extends EntityObject{
+	
+	
 	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -6000346479850349346L;
-	
+	private static final long serialVersionUID = 3088541786716168697L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
@@ -102,5 +105,13 @@ public class Supplier implements Serializable{
 	}
 	public void setPrimaryPhoneNumber(PhoneNumber primaryPhoneNumber) {
 		this.primaryPhoneNumber = primaryPhoneNumber;
+	}
+	public void addProducts(List<Product> products2) {
+		if(this.products!=null){
+			products.addAll(products2);
+		}else{
+			products = products2;
+		}
+		
 	}
 }

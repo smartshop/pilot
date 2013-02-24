@@ -10,7 +10,7 @@ http://cxf.apache.org/jaxrs
 http://cxf.apache.org/schemas/jaxrs.xsd">
 
 	<import resource="classpath:META-INF/cxf/cxf.xml" />
-	<import resource="applicationContext-hibernate.xml"/>
+	<import resource="applicationContext-hibernate.xml" />
 
 
 	<context:property-placeholder />
@@ -22,17 +22,45 @@ http://cxf.apache.org/schemas/jaxrs.xsd">
 	<bean
 		class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
 
-	<jaxrs:server id="services" address="/">
+	<jaxrs:server id="services" address="/catalog">
 		<jaxrs:serviceBeans>
- 			<bean id ="catalogController" class="com.smartshop.pilot.CatalogController" />
- 			<bean id ="bulkCatalogController" class="com.smartshop.pilot.BulkCatalogController" />
+			<bean id="catalogController" class="com.smartshop.pilot.CatalogController" />
+
 		</jaxrs:serviceBeans>
 		<jaxrs:providers>
 			<bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider" />
 		</jaxrs:providers>
 	</jaxrs:server>
-	
-	<bean name="catalogService" class="com.smartshop.dao.CatalogService"/>
-	<bean name="catalogGenerator" class="com.smartshop.dao.CatalogGenerator"/>
+
+	<jaxrs:server id="bulkServices" address="/bulk">
+		<jaxrs:serviceBeans>
+
+			<bean id="bulkCatalogController" class="com.smartshop.pilot.BulkCatalogController" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider" />
+		</jaxrs:providers>
+	</jaxrs:server>
+
+	<bean name="entityMap" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<entry key="address" value="com.smartshop.catalog.Address"></entry>
+				<entry key="customer" value="com.smartshop.catalog.Customer"></entry>
+				<entry key="product" value="com.smartshop.catalog.Product"></entry>
+				<entry key="supplier" value="com.smartshop.catalog.Supplier"></entry>
+				<entry key="product-category" value="com.smartshop.catalog.ProductCategory"></entry>
+				<entry key="manufacturer" value="com.smartshop.catalog.Manufacturer"></entry>
+				<entry key="phone-numbber" value="com.smartshop.catalog.PhoneNumber"></entry>
+				<entry key="email" value="com.smartshop.catalog.Email"></entry>
+
+			</map>
+
+		</constructor-arg>
+
+	</bean>
+
+	<bean name="catalogService" class="com.smartshop.dao.CatalogService" />
+	<bean name="catalogGenerator" class="com.smartshop.dao.CatalogGenerator" />
 
 </beans>

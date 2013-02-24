@@ -1,14 +1,16 @@
 package com.smartshop.catalog;
 
-import java.io.Serializable;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
+
 @Entity
-public class Address implements Serializable{
+public class Address extends EntityObject{
 	
 	/**
 	 * 
@@ -32,10 +34,19 @@ public class Address implements Serializable{
 	private String city;
 	private String state;
 	private String country;
-	private Long zipcode;
+	private String zipcode;
+
 
 
 	
+	public String getZipcode() {
+		return zipcode;
+	}
+
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
+	}
+
 	public String getAddressLine1() {
 		return addressLine1;
 	}
@@ -66,12 +77,7 @@ public class Address implements Serializable{
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	public Long getZipcode() {
-		return zipcode;
-	}
-	public void setZipcode(Long zipcode) {
-		this.zipcode = zipcode;
-	}
+
 
 
 }

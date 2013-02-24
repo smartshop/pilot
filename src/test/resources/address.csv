@@ -1,10 +1,5 @@
-	private String addressLine1;
-	private String addressLine2;
-	private String city;
-	private String state;
-	private String country;
-	private Long zipcode;
-	private Long PhoneNumber1;
-	private Long PhoneNumber2;
-	private String email1;
-	private String email2;
+addressLine1,addressLine2,city,state,country,zipcode
+13003 plantation park ave,1321,orlando,florida,USA,32821
+8848 villa view cir,204,orlando,florida,USA,32821
+8927 legacy ct,301,kissimmee,florida,USA,34747
+7337 hanover parkway,301,greenbelt ,Maryland,USA,20770

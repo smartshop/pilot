@@ -1,21 +1,38 @@
 package com.smartshop.catalog;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-public class Customer {
-	
-	private Integer id;
+
+public class Customer extends EntityObject{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6252150825854429057L;
+
+	private Long id;
 	private String firstName;
 	private String lastName;
 	private Address billingAddress;
 	private Address shippingAddress;
 	private Address secondaryShippingAddress;
 	private String otherDetails;
-	private String primaryEmail;
-	
-	public Integer getId() {
+	private Email email;
+
+
+	public Email getEmail() {
+		return email;
+	}
+	public void setEmail(Email email) {
+		this.email = email;
+	}
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getFirstName() {
@@ -54,12 +71,4 @@ public class Customer {
 	public void setOtherDetails(String otherDetails) {
 		this.otherDetails = otherDetails;
 	}
-	public String getPrimaryEmail() {
-		return primaryEmail;
-	}
-	public void setPrimaryEmail(String primaryEmail) {
-		this.primaryEmail = primaryEmail;
-	}
-	
-
 }

@@ -12,6 +12,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 
@@ -24,6 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import com.smartshop.catalog.Address;
+import com.smartshop.catalog.EntityObject;
 import com.smartshop.catalog.Product;
 import com.smartshop.catalog.ProductCategory;
 import com.smartshop.catalog.Supplier;
@@ -32,56 +34,59 @@ import com.smartshop.dao.CatalogService;
 
 @Controller
 public class CatalogController {
-	
-	
+
+
 	@Autowired
 	private CatalogService catalogService;
 
 	@Autowired
 	private SessionFactory sessionFactory;
-    
+
 	@GET
 	@Produces("application/json")
-	@Path("/catalog/product/{productId}")
+	@Path("/{entityType}/{productId}/")
 	@Transactional
-	public Product getProductById(@PathParam("productId") Integer productId) {
+	public EntityObject getProductById(@PathParam("entityType") String entityType, @PathParam("productId") Integer productId) {
 
-		Product product = catalogService.getProductById(productId);
+		EntityObject entity = catalogService.getEntityById(entityType,productId);
+		if(entity==null){
+			throw new WebApplicationException(404);
+		}
+		return entity;	
+	}
+
+	@POST
+	@Produces("application/json")
+	@Consumes("application/json")
+	@Path("/catalog/product/")
+	public Product  addProduct(Product product) {
+
+		catalogService.addOrUpdateProduct(product);
+
 		return product;	
 	}
 
-    @POST
-    @Produces("application/json")
-    @Consumes("application/json")
-    @Path("/catalog/product/")
-    public Product  addProduct(Product product) {
-    	
-	catalogService.addOrUpdateProduct(product);
-	
-	return product;	
-    }
+	@POST
+	@Produces("application/json")
+	@Consumes("application/json")
+	@Path("/catalog/productCategory/")
+	public ProductCategory  addProductCategory(ProductCategory productCategory) {
 
-    @POST
-    @Produces("application/json")
-    @Consumes("application/json")
-    @Path("/catalog/productCategory/")
-    public ProductCategory  addProductCategory(ProductCategory productCategory) {
-    	
-	catalogService.addOrUpdateProduct(productCategory);
-	
-	return productCategory;	
-    }
+		catalogService.addOrUpdateProduct(productCategory);
 
-    @POST
-    @Produces("application/json")
-    @Consumes("application/json")
-    @Path("/catalog/address/")
-    public Address  createAddress(Address address) {
-    	
-	catalogService.addOrUpdateProduct(address);
-	
-	return address;	
-    }
+		return productCategory;	
+	}
+
+	@POST
+	@Produces("application/json")
+	@Consumes("application/json")
+	@Path("/catalog/address/")
+	public Address  createAddress(Address address) {
+
+		catalogService.addOrUpdateProduct(address);
+
+		return address;	
+	}
 
 	@POST
 	@Produces("application/json")
@@ -89,10 +94,10 @@ public class CatalogController {
 	public Supplier modifyJson(Supplier supplier) {
 
 		catalogService.addOrUpdateProduct(supplier);
-		
+
 		return supplier;
 	}
-    
+
 
 }
 
