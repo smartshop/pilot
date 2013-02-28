@@ -23,6 +23,7 @@ import com.smartshop.catalog.Address;
 import com.smartshop.catalog.Email;
 import com.smartshop.catalog.PhoneNumber;
 import com.smartshop.catalog.Product;
+import com.smartshop.catalog.ProductCategory;
 import com.smartshop.catalog.Supplier;
 
 public class HelloWorldIT {
@@ -87,7 +88,7 @@ public class HelloWorldIT {
 		address.setAddressLine1("123 test st");
 		address.setCity("orlando");
 		address.setState("Florida");
-		address.setZipcode(34747L);
+		address.setZipcode("34747");
 		address.setCountry("USA");
 		Supplier supplier = new Supplier();
 		supplier.setPrimaryEmail(email);
@@ -96,6 +97,29 @@ public class HelloWorldIT {
 		supplier.setName("Lakshmi general Stores");
 		System.out.println(toJson(supplier, true));
 
+	}
+	
+	@Test
+	public void generateCategory() throws Exception{
+		
+		ProductCategory category =  new  ProductCategory();
+		category.setName("cereals");
+		category.setDescription("all pulses and cereals");
+		System.out.println("\n"+toJson(category, true));
+		category.setName("forgienFoods");
+		category.setDescription("italian");
+		System.out.println("\n"+toJson(category, true));
+	}
+	
+	@Test
+	public void generateProduct() throws Exception{
+		
+		Product product =  new  Product();
+		product.setName("toor Daal");
+		product.setDescription("non-oily");
+		product.setSellingUnit("Kilo");
+		product.setUnitPrice(36.45);
+		System.out.println("\n"+toJson(product, true));
 	}
 	
     public String toJson(Object pojo, boolean prettyPrint)

@@ -90,7 +90,8 @@ public class CatalogController {
 
 	@POST
 	@Produces("application/json")
-	@Path("/catalog/supplier/")
+	@Path("/supplier/")
+	@Transactional
 	public Supplier modifyJson(Supplier supplier) {
 
 		catalogService.addOrUpdateProduct(supplier);
